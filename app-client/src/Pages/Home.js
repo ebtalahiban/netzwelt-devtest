@@ -10,7 +10,7 @@ const Home = () => {
 
   const fetchTerritories = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/territories');
+      const response = await axios.get('https://netzwelt-devtest.onrender.com/territories');
       setTerritories(response.data.data);
     } catch (error) {
       console.error('Error fetching territories', error);
