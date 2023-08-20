@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
   
     const handleSubmit = async (e) => {
       e.preventDefault(); 
@@ -16,17 +15,13 @@ const Login = () => {
         });
   
         if (response.status === 200) {
-          setIsLoggedIn(true); 
+          onLogin();
           console.log('Logged in successfully');
         }
       } catch (error) {
         console.error('Login failed', error);
       }
     };
-  
-    if (isLoggedIn) {
-      return <p>You are logged in!</p>;
-    }
   
     return (
       <div className="form-container">
