@@ -24,6 +24,15 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get('/territories', async (req, res) => {
+  try {
+    const response = await axios.get('https://netzwelt-devtest.azurewebsites.net/Territories/All');
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching territories' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
